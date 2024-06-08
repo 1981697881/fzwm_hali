@@ -151,7 +151,7 @@ class _PickingPageState extends State<PickingPage> {
           "title": "单据日期",
           "name": "FDate",
           "isHide": false,
-          "value": {"label": value["FDate"], "value": value["FDate"]}
+          "value": {"label": value["Fdate"], "value": value["Fdate"]}
         });
         arr.add({
           "title": "物料名称",

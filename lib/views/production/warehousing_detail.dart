@@ -315,7 +315,7 @@ class _WarehousingDetailState extends State<WarehousingDetail> {
       }
       getStockList();
 
-    //_onEvent("Y2Oh10jD");
+    _onEvent("sUDIG5Pb");
     /*_onEvent("u+zeGAN0HjGOOOh3LfNGcSst+0RCbFmsR1G63psT2kLVkcuIIRcQDXt3X7AnjnOD");*/
   }
 
@@ -907,7 +907,50 @@ class _WarehousingDetailState extends State<WarehousingDetail> {
       List<Widget> comList = [];
       for (int j = 0; j < this.hobby[i].length; j++) {
         if (!this.hobby[i][j]['isHide']) {
-         if (j == 10) {
+          if (j == 3|| j == 5) {
+            comList.add(
+              Column(children: [
+                Container(
+                  color: Colors.white,
+                  child: ListTile(
+                      title: Text(this.hobby[i][j]["title"] +
+                          '：' +
+                          this.hobby[i][j]["value"]["label"].toString()),
+                      trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            IconButton(
+                              icon: new Icon(Icons.filter_center_focus),
+                              tooltip: '点击扫描',
+                              onPressed: () {
+                                this._textNumber.text = this
+                                    .hobby[i][j]["value"]["label"]
+                                    .toString();
+                                this._FNumber = this
+                                    .hobby[i][j]["value"]["label"]
+                                    .toString();
+                                checkItem = 'FNumber';
+                                this.show = false;
+                                checkData = i;
+                                checkDataChild = j;
+                                scanDialog();
+                                print(this.hobby[i][j]["value"]["label"]);
+                                if (this.hobby[i][j]["value"]["label"] != 0) {
+                                  this._textNumber.value =
+                                      _textNumber.value.copyWith(
+                                        text: this
+                                            .hobby[i][j]["value"]["label"]
+                                            .toString(),
+                                      );
+                                }
+                              },
+                            ),
+                          ])),
+                ),
+                divider,
+              ]),
+            );
+          } else if (j == 10) {
           comList.add(
             Column(children: [
               Container(
@@ -1203,7 +1246,6 @@ class _WarehousingDetailState extends State<WarehousingDetail> {
             FEntityItem['famount'] = 0;
           }
           FEntityItem['fdCSPId'] = element[6]['value']['value'] == null || element[6]['value']['value'] == ''?"":element[6]['value']['value'];
-
           FEntityItem['fitemId'] = element[0]['value']['value'];
           FEntityItem['fbatchNo'] = element[5]['value']['value'];
           FEntityItem['fdCStockId'] = element[4]['value']['value'];
@@ -1214,7 +1256,6 @@ class _WarehousingDetailState extends State<WarehousingDetail> {
             Map<String, dynamic> subObj = Map();
             var itemCode = kingDeeCode[subj].split("-");
             if(fSerialSubIndexOf.indexOf(itemCode[0]) == -1){
-
               subObj['uuid'] = itemCode[0];
               subObj['quantity'] = itemCode[1];
               subObj['packNum'] = itemCode[2];

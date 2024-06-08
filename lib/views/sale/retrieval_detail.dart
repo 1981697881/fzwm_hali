@@ -943,7 +943,7 @@ class _RetrievalDetailState extends State<RetrievalDetail> {
       List<Widget> comList = [];
       for (int j = 0; j < this.hobby[i].length; j++) {
         if (!this.hobby[i][j]['isHide']) {
-          if ( j == 5) {
+          if (j == 3|| j == 5) {
             comList.add(
               Column(children: [
                 Container(
@@ -959,18 +959,25 @@ class _RetrievalDetailState extends State<RetrievalDetail> {
                               icon: new Icon(Icons.filter_center_focus),
                               tooltip: '点击扫描',
                               onPressed: () {
-                                this._textNumber.text =
-                                    this.hobby[i][j]["value"]["label"];
-                                this._FNumber =
-                                    this.hobby[i][j]["value"]["label"];
+                                this._textNumber.text = this
+                                    .hobby[i][j]["value"]["label"]
+                                    .toString();
+                                this._FNumber = this
+                                    .hobby[i][j]["value"]["label"]
+                                    .toString();
+                                checkItem = 'FNumber';
+                                this.show = false;
                                 checkData = i;
                                 checkDataChild = j;
                                 scanDialog();
+                                print(this.hobby[i][j]["value"]["label"]);
                                 if (this.hobby[i][j]["value"]["label"] != 0) {
                                   this._textNumber.value =
                                       _textNumber.value.copyWith(
-                                    text: this.hobby[i][j]["value"]["label"],
-                                  );
+                                        text: this
+                                            .hobby[i][j]["value"]["label"]
+                                            .toString(),
+                                      );
                                 }
                               },
                             ),
@@ -979,8 +986,7 @@ class _RetrievalDetailState extends State<RetrievalDetail> {
                 divider,
               ]),
             );
-          } else
-          if (j == 4) {
+          } else if (j == 4) {
             comList.add(
               _item('仓库:', stockList, this.hobby[i][j]['value']['label'],
                   this.hobby[i][j],

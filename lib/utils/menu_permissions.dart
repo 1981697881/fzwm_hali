@@ -52,6 +52,8 @@ class MenuPermissions {
             "source": "",
           };
           menu.add(obj);
+          break;
+        case 25:
           menu.add({
             "icon": Icons.loupe,
             "text": "外购退货",
@@ -60,17 +62,6 @@ class MenuPermissions {
             "router": PurchaseReturnPage(tranType: i['source']),
             "source": "",
           });
-          break;
-        case 17:
-          var obj = {
-            "icon": Icons.loupe,
-            "text": "外购入库无源单",
-            "parentId": 1,
-            "color": Colors.pink.withOpacity(0.7),
-            "router": PurchaseWarehousingDetail(FBillNo: null,tranType: i['source']),
-            "source": "",
-          };
-          menu.add(obj);
           menu.add({
             "icon": Icons.loupe,
             "text": "外购退货无源单",
@@ -90,12 +81,22 @@ class MenuPermissions {
             "source": "",
           };
           menu.add(obj);
+          break;
+        case 30:
           menu.add({
             "icon": Icons.loupe,
             "text": "销售退货",
             "parentId": 2,
             "color": Colors.pink.withOpacity(0.7),
             "router": ReturnGoodsPage(tranType: i['source']),
+            "source": "",
+          });
+          menu.add({
+            "icon": Icons.loupe,
+            "text": "销售退货无源单",
+            "parentId": 2,
+            "color": Colors.pink.withOpacity(0.7),
+            "router": ReturnGoodsDetail(FBillNo: null,tranType: i['source']),
             "source": "",
           });
           break;
@@ -109,14 +110,6 @@ class MenuPermissions {
             "source": "",
           };
           menu.add(obj);
-          menu.add({
-            "icon": Icons.loupe,
-            "text": "销售退货无源单",
-            "parentId": 2,
-            "color": Colors.pink.withOpacity(0.7),
-            "router": ReturnGoodsDetail(FBillNo: null,tranType: i['source']),
-            "source": "",
-          });
           break;
         case 18:
           var obj = {
@@ -128,22 +121,35 @@ class MenuPermissions {
             "source": "",
           };
           menu.add(obj);
-          menu.add({
-            "icon": Icons.loupe,
-            "text": "退料",
-            "parentId": 3,
-            "color": Colors.pink.withOpacity(0.7),
-            "router": ReturnPage(tranType: i['source']),
-            "source": "",
-          });
-          menu.add({
-            "icon": Icons.loupe,
-            "text": "投料确认",
-            "parentId": 3,
-            "color": Colors.pink.withOpacity(0.7),
-            "router": PickingOutSourcingPage(tranType: 88),
-            "source": "",
-          });
+
+          break;
+        case 28:
+         menu.add({
+           "icon": Icons.loupe,
+           "text": "投料确认",
+           "parentId": 3,
+           "color": Colors.pink.withOpacity(0.7),
+           "router": PickingOutSourcingPage(tranType: 88),
+           "source": "",
+         });
+          break;
+       case 29:
+         menu.add({
+           "icon": Icons.loupe,
+           "text": "退料",
+           "parentId": 3,
+           "color": Colors.pink.withOpacity(0.7),
+           "router": ReturnPage(tranType: i['source']),
+           "source": "",
+         });
+         menu.add({
+           "icon": Icons.loupe,
+           "text": "退料无源单",
+           "parentId": 3,
+           "color": Colors.pink.withOpacity(0.7),
+           "router": ReturnDetail(FBillNo: null,tranType: i['source']),
+           "source": "",
+         });
           break;
         case 19:
           var obj = {
@@ -155,14 +161,6 @@ class MenuPermissions {
             "source": "",
           };
           menu.add(obj);
-          menu.add({
-            "icon": Icons.loupe,
-            "text": "退料无源单",
-            "parentId": 3,
-            "color": Colors.pink.withOpacity(0.7),
-            "router": ReturnDetail(FBillNo: null,tranType: i['source']),
-            "source": "",
-          });
           break;
         case 20:
           var obj = {
@@ -211,7 +209,7 @@ class MenuPermissions {
         case 9:
           var obj = {
             "icon": Icons.loupe,
-            "text": "调拨无源单",
+            "text": "调拨",
             "parentId": 4,
             "color": Colors.pink.withOpacity(0.7),
             "router": AllocationDetail(FBillNo: null, tranType: 41),
@@ -230,23 +228,29 @@ class MenuPermissions {
             };
             menu.add(obj);
           break;
+        case 31:
+          menu.add({
+            "icon": Icons.loupe,
+            "text": "其他入库",
+            "parentId": 4,
+            "color": Colors.pink.withOpacity(0.7),
+            "router": OtherWarehousingDetail(),
+            "source": '',
+          });
+          break;
+        case 32:
+          menu.add({
+            "icon": Icons.loupe,
+            "text": "其他出库",
+            "parentId": 4,
+            "color": Colors.pink.withOpacity(0.7),
+            "router": ExWarehouseDetail(),
+            "source": '',
+          });
+          break;
       }
     }
-    menu.add({
-      "icon": Icons.loupe,
-      "text": "其他入库",
-      "parentId": 4,
-      "color": Colors.pink.withOpacity(0.7),
-      "router": OtherWarehousingDetail(),
-      "source": '',
-    }); menu.add({
-      "icon": Icons.loupe,
-      "text": "其他出库",
-      "parentId": 4,
-      "color": Colors.pink.withOpacity(0.7),
-      "router": ExWarehouseDetail(),
-      "source": '',
-    });
+
     /*menu.add({
       "icon": Icons.loupe,
       "text": "外购入库",

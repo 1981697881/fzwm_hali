@@ -198,6 +198,7 @@ class _MyHomePageState extends State {
               ToastUtil.showInfo(authorChildRes['msg']);
             }
           }
+          var listData = jsonEncode(parentData);
           sharedPreferences.setString('menuList', jsonEncode(parentData));
           sharedPreferences.setString('MenuPermissions', jsonEncode(entityRes['data']));
           ToastUtil.showInfo('登录成功');
