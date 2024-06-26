@@ -219,7 +219,7 @@ class _PickingDetailState extends State<PickingDetail> {
           "name": "FMaterialId",
           "isHide": false,
           "value": {
-            "label": value['FItemName'] + "- (" + value['FItemNumber'] + ")",
+            "label": value['FItemNumber'] + "- (" + value['FItemName'] + ")",
             "value": value['FItemNumber'],
             "barcode": [],
             "kingDeeCode": [],

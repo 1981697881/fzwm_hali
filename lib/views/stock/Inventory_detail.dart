@@ -225,7 +225,7 @@ class _InventoryDetailState extends State<InventoryDetail> {
         fNumber.add(value['FItemNumber']);
         List arr = [];
         arr.add({
-          "title": "物料名称",
+          "title": "物料",
           "name": "FMaterial",
           "isHide": false,
           "value": {
@@ -681,7 +681,7 @@ class _InventoryDetailState extends State<InventoryDetail> {
       if (number == 0 ) {/*&& this.fBillNo == ""*/
         List arr = [];
         arr.add({
-          "title": "物料名称",
+          "title": "物料",
           "name": "FMaterial",
           "isHide": false,
           "value": {

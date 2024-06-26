@@ -215,7 +215,7 @@ class _OtherWarehousingDetailState extends State<OtherWarehousingDetail> {
         fNumber.add(value[5]);
         List arr = [];
         arr.add({
-          "title": "物料名称",
+          "title": "物料",
           "name": "FMaterial",
           "isHide": false,
           "value": {"label": value[6] + "- (" + value[5] + ")", "value": value[5],"barcode": []}
@@ -632,7 +632,7 @@ class _OtherWarehousingDetailState extends State<OtherWarehousingDetail> {
       if(number ==0 && this.fBillNo ==""){
         List arr = [];
         arr.add({
-          "title": "物料名称",
+          "title": "物料",
           "name": "FMaterial",
           "isHide": false,
           "value": {

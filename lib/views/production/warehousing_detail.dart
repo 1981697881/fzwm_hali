@@ -223,11 +223,11 @@ class _WarehousingDetailState extends State<WarehousingDetail> {
           fNumber.add(value['FItemNumber']);
           List arr = [];
           arr.add({
-            "title": "物料名称",
+            "title": "物料",
             "name": "FMaterial",
             "isHide": false,
             "value": {
-              "label": value['FItemName'] + "- (" + value['FItemNumber'] + ")",
+              "label": value['FItemNumber'] + "- (" + value['FItemName'] + ")",
               "value": value['FItemNumber'],
               "barcode": [],
               "kingDeeCode": [],
@@ -315,7 +315,7 @@ class _WarehousingDetailState extends State<WarehousingDetail> {
       }
       getStockList();
 
-    _onEvent("sUDIG5Pb");
+    //_onEvent("sUDIG5Pb");
     /*_onEvent("u+zeGAN0HjGOOOh3LfNGcSst+0RCbFmsR1G63psT2kLVkcuIIRcQDXt3X7AnjnOD");*/
   }
 
@@ -678,7 +678,7 @@ class _WarehousingDetailState extends State<WarehousingDetail> {
       if (number == 0 && this.fBillNo == "") {
           List arr = [];
           arr.add({
-            "title": "物料名称",
+            "title": "物料",
             "name": "FMaterial",
             "isHide": false,
             "value": {

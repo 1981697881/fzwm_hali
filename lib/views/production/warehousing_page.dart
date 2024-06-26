@@ -55,6 +55,7 @@ class _WarehousingPageState extends State<WarehousingPage> {
     DateTime newDate = DateTime.now();
     _dateSelectText = "${dateTime.year}-${dateTime.month.toString().padLeft(2,'0')}-${dateTime.day.toString().padLeft(2,'0')} 00:00:00.000 - ${newDate.year}-${newDate.month.toString().padLeft(2,'0')}-${newDate.day.toString().padLeft(2,'0')} 00:00:00.000";
     EasyLoading.dismiss();
+   // _onEvent("WORK018532");
     /// 开启监听
      if (_subscription == null) {
       _subscription = scannerPlugin
@@ -119,7 +120,6 @@ class _WarehousingPageState extends State<WarehousingPage> {
         userMap['billNo'] = this.keyWord;
       }
     }
-    this.isScan = false;
     String order = await CurrencyEntity.polling(userMap);
     if (!jsonDecode(order)['success']) {
       ToastUtil.errorDialog(context,
@@ -130,6 +130,31 @@ class _WarehousingPageState extends State<WarehousingPage> {
     orderDate = jsonDecode(order)['data']['list'];
     hobby = [];
     if (orderDate.length > 0) {
+      if(isScan){
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return WarehousingDetail(
+                  FBillNo: {"value": orderDate[0]['FBillNo']},
+                  tranType: this.tranType
+                // 路由参数
+              );
+            },
+          ),
+        ).then((data) {
+          //延时500毫秒执行
+          Future.delayed(
+              const Duration(milliseconds: 500),
+                  () {
+                setState(() {
+                  //延时更新状态
+                  this._initState();
+                });
+              });
+        });
+      }
+      this.isScan = false;
       orderDate.forEach((value) {
         List arr = [];
         arr.add({
@@ -145,10 +170,10 @@ class _WarehousingPageState extends State<WarehousingPage> {
           "value": {"label": value["Fdate"], "value": value["Fdate"]}
         });
         arr.add({
-          "title": "物料名称",
+          "title": "物料",
           "name": "FMaterial",
           "isHide": false,
-          "value": {"label": value["FItemName"], "value": value["FItemNumber"]}
+          "value": {"label": value['FItemNumber'] + "- (" + value['FItemName'] + ")", "value": value["FItemNumber"]}
         });
         arr.add({
           "title": "规格型号",
@@ -175,6 +200,7 @@ class _WarehousingPageState extends State<WarehousingPage> {
         this._getHobby();
       });
     } else {
+      this.isScan = false;
       setState(() {
         EasyLoading.dismiss();
         this._getHobby();
@@ -189,7 +215,7 @@ class _WarehousingPageState extends State<WarehousingPage> {
     if(event == ""){
       return;
     }
-
+    this.isScan = true;
     _code = event;
     keyWord = _code;
     this.controller.text = _code;

@@ -247,11 +247,11 @@ class _PurchaseReturnDetailState extends State<PurchaseReturnDetail> {
         fNumber.add(value['FItemNumber']);
         List arr = [];
         arr.add({
-          "title": "物料名称",
+          "title": "物料",
           "name": "FMaterial",
           "isHide": false,
           "value": {
-            "label": value['FItemName'] + "- (" + value['FItemNumber'] + ")",
+            "label": value['FItemNumber'] + "- (" + value['FItemName'] + ")",
             "value": value['FItemNumber'],
             "barcode": [],
             "kingDeeCode": [],
@@ -697,7 +697,7 @@ class _PurchaseReturnDetailState extends State<PurchaseReturnDetail> {
       if (number == 0 && this.fBillNo == "") {
         List arr = [];
         arr.add({
-          "title": "物料名称",
+          "title": "物料",
           "name": "FMaterial",
           "isHide": false,
           "value": {

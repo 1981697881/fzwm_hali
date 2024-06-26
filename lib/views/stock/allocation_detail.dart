@@ -84,7 +84,7 @@ class _AllocationDetailState extends State<AllocationDetail> {
     } else {
       isScanWork = false;
       this.fBillNo = '';
-      //_onEvent("F9SndoD7");
+     /* _onEvent("5oSyKcBy");*/
     }
   }
 
@@ -208,11 +208,11 @@ class _AllocationDetailState extends State<AllocationDetail> {
         fNumber.add(value['FItemNumber']);
         List arr = [];
         arr.add({
-          "title": "物料名称",
+          "title": "物料",
           "name": "FMaterial",
           "isHide": false,
           "value": {
-            "label": value['FItemName'] + "- (" + value['FItemNumber'] + ")",
+            "label": value['FItemNumber'] + "- (" + value['FItemName'] + ")",
             "value": value['FItemNumber'],
             "barcode": [],
             "kingDeeCode": [],
@@ -298,6 +298,7 @@ class _AllocationDetailState extends State<AllocationDetail> {
       });
       ToastUtil.showInfo('无数据');
     }
+
   }
 
   void _onEvent(event) async {
@@ -674,7 +675,7 @@ class _AllocationDetailState extends State<AllocationDetail> {
       if (number == 0 && this.fBillNo == "") {
         List arr = [];
         arr.add({
-          "title": "物料名称",
+          "title": "物料",
           "name": "FMaterial",
           "isHide": false,
           "value": {
@@ -708,7 +709,7 @@ class _AllocationDetailState extends State<AllocationDetail> {
           "title": "调出仓库",
           "name": "FStockID",
           "isHide": false,
-          "value": {"label": "", "value": ""}
+          "value": {"label": materialDate["warehouse"], "value": materialDate["stockNumber"]}
         });
         arr.add({
           "title": "批号",
@@ -720,22 +721,22 @@ class _AllocationDetailState extends State<AllocationDetail> {
           }
         });
         arr.add({
-          "title": "仓位",
+          "title": "调出仓位",
           "name": "FStockLocID",
           "isHide": false,
-          "value": {"label": "", "value": "", "hide": false}
+          "value": {"label": materialDate["location"] != null?materialDate["location"]: "", "value": materialDate["location"] != null?materialDate["location"]: "", "hide": false}
         });
         arr.add({
-          "title": "调入",
+          "title": "调入仓库",
           "name": "",
           "isHide": false,
           "value": {"label": "", "value": ""}
         });
         arr.add({
-          "title": "库存单位",
+          "title": "调入仓位",
           "name": "",
-          "isHide": true,
-          "value": {"label": materialDate["unitName"], "value": materialDate["unitNumber"]}
+          "isHide": false,
+          "value": {"label": "", "value": ""}
         });
         arr.add({
           "title": "申请数量",
@@ -757,10 +758,12 @@ class _AllocationDetailState extends State<AllocationDetail> {
       }
       setState(() {
         EasyLoading.dismiss();
+        this._getHobby();
       });
     } else {
       setState(() {
         EasyLoading.dismiss();
+        this._getHobby();
       });
       ToastUtil.showInfo('无数据');
     }
@@ -950,13 +953,13 @@ class _AllocationDetailState extends State<AllocationDetail> {
                 divider,
               ]),
             );
-          } else if (j == 4) {
+          }/* else if (j == 4) {
             comList.add(
               _item('调出仓库:', stockList, this.hobby[i][j]['value']['label'],
                   this.hobby[i][j],
                   stock: this.hobby[i]),
             );
-          }else if (j == 6) {
+          }*/else if (j == 8) {
             comList.add(
               Column(children: [
                 Container(
@@ -1083,7 +1086,6 @@ class _AllocationDetailState extends State<AllocationDetail> {
                     child: FlatButton(
                         color: Colors.grey[100],
                         onPressed: () {
-
                           // 关闭 Dialog
                           Navigator.pop(context);
                           setState(() {
